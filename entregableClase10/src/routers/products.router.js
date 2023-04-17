@@ -10,6 +10,23 @@ const pm = new ProductManager();
 
 
 // ****************** GET ****************** //
+router.get('/home', async (req, res) => {
+    // http://localhost:8080/products?limit=2
+    // const { limit } = req.query
+    try {
+        const valueReturned = await pm.getProducts()
+        if (valueReturned.error) return res.status(200).send({ status: 'Sin productos', valueReturned })
+        // const limitProduts = valueReturned.slice(0, limit)
+        // res.status(200).send({ status: 'Productos', limitProduts })
+        console.log(valueReturned);
+        // const product = valueReturned[0]
+        res.render('home',  {valueReturned} )
+    }
+    catch (err) {
+        res.status(400).send({ status: 'error router', err })
+    }
+
+})
 
 router.get('/', async (req, res) => {
     // http://localhost:8080/products?limit=2
@@ -19,6 +36,7 @@ router.get('/', async (req, res) => {
         if (valueReturned.error) return res.status(200).send({ status: 'Sin productos', valueReturned })
         const limitProduts = valueReturned.slice(0, limit)
         res.status(200).send({ status: 'Productos', limitProduts })
+        // res.render('home', { limitProduts })
     }
     catch (err) {
         res.status(400).send({ status: 'error router', err })
@@ -59,14 +77,16 @@ router.post('/', async (req, res) => {
             description,
             price,
             status,
+            category,
             thumbnail,
             code,
             stock
         } = productSend
 
+        console.log(productSend, 'productSend');
 
 
-        const valueReturned = await pm.addProduct(title, description, price, status, thumbnail, code, stock)
+        const valueReturned = await pm.addProduct(title, description, price, status, category, thumbnail, code, stock)
         console.log(valueReturned)
         // Si addProduct devuelve un objeto con la propiedad error quiere decir que hay un error
         if (valueReturned.status === 'error') return res.status(400).send({ valueReturned })
@@ -124,7 +144,8 @@ router.post('/formulario', uploader.single('thumbnail'), async (req, res) => {
         // console.log(title, description, price, thumbnail, code, stock)
         const valueReturned = await pm.addProduct(title, description, price, status,category, thumbnail, code, stock)
         console.log(valueReturned)
-        res.send(res.redirect("http://localhost:8080/static"))
+        // res.send(res.redirect("http://localhost:8080/realTimeProducts"))
+        res.send(200)
     }
     catch (err) {
         console.log(err);

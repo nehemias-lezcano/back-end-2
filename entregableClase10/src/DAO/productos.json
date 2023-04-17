@@ -115,5 +115,61 @@
     "code": "9874444444",
     "stock": 13,
     "id": 9
+  },
+  {
+    "title": "Limon",
+    "description": "Limon verde",
+    "price": 360,
+    "status": true,
+    "category": "Frutas y verduras",
+    "thumbnail": [
+      "empty"
+    ],
+    "code": "13547721",
+    "stock": 269,
+    "id": 10
+  },
+  {
+    "title": "asdasd",
+    "description": "asdasdasd",
+    "price": 123123,
+    "status": true,
+    "category": "asdasdasd",
+    "thumbnail": [
+      "empty"
+    ],
+    "code": "2134435454",
+    "stock": 123123,
+    "id": 11
+  },
+  {
+    "title": "asdasd",
+    "description": "asdasdasd",
+    "price": 123123123,
+    "status": true,
+    "category": "asdasdasd",
+    "thumbnail": [
+      [
+        "empty"
+      ]
+    ],
+    "code": "123123123",
+    "stock": 123123123,
+    "id": 12
+  },
+  {
+    "title": "asdasd1111",
+    "description": "asdasdasd111",
+    "price": 123123123111,
+    "status": true,
+    "category": "asdasdasd111",
+    "thumbnail": [
+      [
+        "empty"
+      ]
+    ],
+    "code": "123123123111",
+    "stock": 123123123111,
+    "id": 13
   }
 ]
